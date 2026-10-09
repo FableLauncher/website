@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#0b0b0b" />
+    <meta name="color-scheme" content="dark" />
+    <meta
+      name="description"
+      content="Fable Launcher is a Minecraft Java Edition launcher for instances, mod loaders, Java runtimes, and Modrinth content."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Fable Launcher" />
+    <meta
+      property="og:description"
+      content="A Minecraft Java Edition launcher for instances, mod loaders, Java runtimes, and Modrinth content."
+    />
+    <meta property="og:image" content="/assets/fable-logo.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Fable Launcher" />
+    <meta
+      name="twitter:description"
+      content="A Minecraft Java Edition launcher for instances, mod loaders, Java runtimes, and Modrinth content."
+    />
+    <link rel="icon" type="image/png" href="/assets/fable-logo.png" />
+    <link rel="apple-touch-icon" href="/assets/fable-logo.png" />
+    <title>Fable Launcher</title>
+    <script>
+      window.setTimeout(function () {
+        const loader = document.getElementById("boot-loader");
+        if (loader) loader.classList.add("boot-done");
+      }, 6000);
+    </script>
+    <style>
+      #boot-loader {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 18px;
+        background: #0b0b0b;
+        transition: opacity 0.5s ease, visibility 0.5s ease;
+      }
+      html.light #boot-loader { background: #f7f9fb; }
+      #boot-loader img {
+        width: 76px;
+        height: 76px;
+        object-fit: contain;
+        animation: boot-pulse 1.6s ease-in-out infinite;
+      }
+      #boot-loader .boot-name {
+        color: #b5b5b5;
+        font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+        font-size: 15px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+      }
+      html.light #boot-loader .boot-name { color: #4d5962; }
+      .boot-dots { display: flex; gap: 8px; }
+      .boot-dots i {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #4db3f2;
+        animation: boot-bounce 1.2s ease-in-out infinite;
+      }
+      .boot-dots i:nth-child(2) { animation-delay: 0.15s; }
+      .boot-dots i:nth-child(3) { animation-delay: 0.3s; }
+      #boot-loader.boot-done { opacity: 0; visibility: hidden; pointer-events: none; }
+      @keyframes boot-pulse {
+        0%, 100% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.06); opacity: 0.85; }
+      }
+      @keyframes boot-bounce {
+        0%, 100% { transform: translateY(0); opacity: 0.5; }
+        50% { transform: translateY(-6px); opacity: 1; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        #boot-loader,
+        #boot-loader img,
+        .boot-dots i { animation: none; transition-duration: 0.01ms; }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <div id="root"></div>
+    <div id="boot-loader" aria-hidden="true">
+      <img src="/assets/fable-logo.png" alt="" width="76" height="76" />
+      <span class="boot-name">Fable Launcher</span>
+      <div class="boot-dots"><i></i><i></i><i></i></div>
+    </div>
+    <noscript>
+      <style>#boot-loader { display: none; }</style>
+      <a href="#main-content">Skip to content</a>
+      Fable Launcher’s website requires JavaScript.
+    </noscript>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
