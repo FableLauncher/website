@@ -1,1 +1,0 @@
-import{T as m}from"./LegalPage-D7b6AJmY.js";import"./vendor-react-YWPnaJPF.js";import"./vendor-icons-Vkqi3tgf.js";import"./vendor-i18n-CMQ6xT2i.js";import"./vendor-router-Casv56qs.js";export{m as default};
