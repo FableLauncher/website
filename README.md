@@ -11,6 +11,18 @@ npm run dev -- --host 0.0.0.0
 
 Vite prints the local URL when the server starts. The site is client-routed; static hosts should route unknown paths back to `index.html`.
 
+To show Admin-managed announcements in the public Blog, copy `.env.example` to
+`.env.local` and set `VITE_ANNOUNCEMENTS_API_URL` to the Fable Admin origin
+(for example, `https://admin.example.com`). This is a public API origin, not a
+credential. The Admin database must have migrations through
+`0004_announcements.sql` applied. Static Markdown articles remain available
+without this setting or when the API is unavailable; static articles take
+precedence over dynamic posts with the same slug. These announcements are
+English-only, website-only, and are not sent to the launcher app. Existing
+Chinese static articles remain localized as before. Set the same variable in
+the public website's Vercel Production build environment for deployment; it is
+embedded at build time and is not a secret.
+
 ## Build
 
 ```powershell
@@ -28,7 +40,7 @@ npm run preview
 - `public/assets/backgrounds/` preserves the reference site's ambient Minecraft scenery and image treatment; it contains no launcher UI imagery.
 - `src/brand.ts` holds the Fable version, future content route names, and nullable release/community URL placeholders. No release API is called.
 - The download page shows Fable Launcher v0.1.1 Beta for Windows. Its download control stays disabled until an authorized public release URL is configured.
-- News has no posts until Fable-specific articles are added. Privacy and terms routes explain that approved policies are not yet published; they make no legal or data-handling claims.
+- The Blog combines static Markdown articles with due-published Admin announcements when configured. Privacy and terms routes explain that approved policies are not yet published; they make no legal or data-handling claims.
 - English and Chinese UI strings are provided in `src/i18n/locales/`.
 
 ## Future content routes

@@ -5,13 +5,23 @@ import { Link, useParams } from "react-router-dom";
 import AuthorCard from "../components/blog/AuthorCard";
 import RelatedPosts from "../components/blog/RelatedPosts";
 import TOC from "../components/blog/TOC";
-import { findPost, getPostsByLang, resolveBlogLang } from "../lib/blog";
+import { resolveBlogLang } from "../lib/blog";
+import { mergeBlogPosts, staticBlogPost } from "../lib/publicAnnouncements";
+import { usePublicAnnouncements } from "../hooks/usePublicAnnouncements";
 import type { TOCItem } from "../types/blog";
 
 const BlogPostPage = () => {
   const { slug } = useParams<{ slug: string }>();
   const { t, i18n } = useTranslation();
-  const post = useMemo(() => findPost(slug, i18n.language), [slug, i18n.language]);
+  const { announcements, loading } = usePublicAnnouncements();
+  const posts = useMemo(
+    () => mergeBlogPosts(i18n.language, announcements),
+    [i18n.language, announcements],
+  );
+  const post = useMemo(
+    () => staticBlogPost(slug, i18n.language) ?? announcements.find((item) => item.slug === slug),
+    [slug, i18n.language, announcements],
+  );
   const tocItems = useMemo((): TOCItem[] => {
     if (!post) return [];
     const headings = post.content.matchAll(/<h([2-3]) id="([^"]+)">([^<]+)<\/h[2-3]>/g);
@@ -22,6 +32,9 @@ const BlogPostPage = () => {
     }));
   }, [post]);
 
+  if (!post && loading) {
+    return <div className="flex min-h-[60vh] items-center justify-center" role="status">Loading article…</div>;
+  }
   if (!post) {
     return (
       <div className="min-h-screen bg-[color-mix(in_srgb,var(--bg)_82%,transparent)] pb-20">
@@ -101,6 +114,16 @@ const BlogPostPage = () => {
                   ))}
                 </div>
               )}
+              {post.announcementLink && (
+                <a
+                  className="mt-6 inline-flex min-h-11 items-center rounded-lg bg-[var(--brand)] px-4 py-2 font-semibold text-white transition-colors hover:brightness-110"
+                  href={post.announcementLink}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {resolveBlogLang(i18n.language) === "zh" ? "了解更多" : "Learn more"}
+                </a>
+              )}
             </header>
 
             {tocItems.length > 0 && <div className="glass-card mb-8 p-5 lg:hidden"><TOC items={tocItems} /></div>}
@@ -112,7 +135,7 @@ const BlogPostPage = () => {
             </aside>
           )}
         </div>
-        <RelatedPosts posts={getPostsByLang(i18n.language)} currentSlug={post.slug} />
+        <RelatedPosts posts={posts} currentSlug={post.slug} />
       </div>
     </div>
   );
