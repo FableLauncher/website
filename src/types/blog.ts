@@ -31,6 +31,7 @@ export interface BlogPost {
   excerpt: string;
   readingTime: number;
   lang: string;
+  announcementLink?: string | null;
 }
 
 export interface BlogIndex {

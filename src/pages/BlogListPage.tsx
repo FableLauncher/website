@@ -3,10 +3,12 @@ import { Search } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import BlogCard from "../components/blog/BlogCard";
-import { getPostsByLang } from "../lib/blog";
+import { mergeBlogPosts } from "../lib/publicAnnouncements";
+import { usePublicAnnouncements } from "../hooks/usePublicAnnouncements";
 
 const BlogListPage = () => {
   const { t, i18n } = useTranslation();
+  const { announcements } = usePublicAnnouncements();
   const [searchInput, setSearchInput] = useState("");
   const [query, setQuery] = useState("");
 
@@ -16,14 +18,14 @@ const BlogListPage = () => {
   }, [searchInput]);
 
   const posts = useMemo(() => {
-    const allPosts = getPostsByLang(i18n.language);
+    const allPosts = mergeBlogPosts(i18n.language, announcements);
     if (!query) return allPosts;
     return allPosts.filter((post) =>
       [post.title, post.excerpt, ...post.tags].some((value) =>
         value.toLocaleLowerCase().includes(query),
       ),
     );
-  }, [i18n.language, query]);
+  }, [i18n.language, query, announcements]);
 
   return (
     <div className="min-h-screen bg-[color-mix(in_srgb,var(--bg)_82%,transparent)] pb-20 transition-colors duration-300">
