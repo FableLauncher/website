@@ -13,7 +13,7 @@ import type { TOCItem } from "../types/blog";
 const BlogPostPage = () => {
   const { slug } = useParams<{ slug: string }>();
   const { t, i18n } = useTranslation();
-  const { announcements, loading } = usePublicAnnouncements();
+  const { announcements, error, loading } = usePublicAnnouncements();
   const posts = useMemo(
     () => mergeBlogPosts(i18n.language, announcements),
     [i18n.language, announcements],
@@ -39,6 +39,11 @@ const BlogPostPage = () => {
     return (
       <div className="min-h-screen bg-[color-mix(in_srgb,var(--bg)_82%,transparent)] pb-20">
         <div className="mx-auto max-w-4xl px-4 pt-8 sm:px-6 lg:px-8">
+          {error && (
+            <p role="alert" className="mb-6 rounded-lg border border-amber-500/40 bg-amber-500/10 p-4 text-sm text-[var(--text-1)]">
+              {t("blog.announcementsLoadError")}
+            </p>
+          )}
           <Link
             to="/blog"
             className="mb-8 inline-flex min-h-11 items-center gap-2 text-[var(--text-2)] transition-colors hover:text-[var(--brand)]"
@@ -46,11 +51,13 @@ const BlogPostPage = () => {
             <ArrowLeft size={18} aria-hidden="true" />
             {t("blog.backToList")}
           </Link>
-          <div className="glass-card p-12 text-center">
-            <h1 tabIndex={-1} className="text-2xl font-bold text-[var(--text-1)]">
-              {t("blog.notFound")}
-            </h1>
-          </div>
+          {!error && (
+            <div className="glass-card p-12 text-center">
+              <h1 tabIndex={-1} className="text-2xl font-bold text-[var(--text-1)]">
+                {t("blog.notFound")}
+              </h1>
+            </div>
+          )}
         </div>
       </div>
     );
@@ -64,6 +71,11 @@ const BlogPostPage = () => {
   return (
     <div className="min-h-screen bg-[color-mix(in_srgb,var(--bg)_82%,transparent)] pb-20 transition-colors duration-300">
       <div className="mx-auto max-w-7xl px-4 pt-8 sm:px-6 lg:px-8">
+        {error && (
+          <p role="alert" className="mb-6 rounded-lg border border-amber-500/40 bg-amber-500/10 p-4 text-sm text-[var(--text-1)]">
+            {t("blog.announcementsLoadError")}
+          </p>
+        )}
         <Link
           to="/blog"
           className="group mb-8 inline-flex min-h-11 items-center gap-2 text-[var(--text-2)] transition-colors hover:text-[var(--brand)]"

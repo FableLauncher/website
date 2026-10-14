@@ -99,6 +99,7 @@ export default {
     tags: "Tags",
     noPosts: "No Fable news has been published yet.",
     noSearchResults: "No Fable news matches this search.",
+    announcementsLoadError: "Some news may be unavailable right now. Please try again later.",
     backToList: "Back to news",
     notFound: "This article is not available.",
     readingTime: "{{minutes}} min read",

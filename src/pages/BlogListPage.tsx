@@ -8,7 +8,7 @@ import { usePublicAnnouncements } from "../hooks/usePublicAnnouncements";
 
 const BlogListPage = () => {
   const { t, i18n } = useTranslation();
-  const { announcements } = usePublicAnnouncements();
+  const { announcements, error } = usePublicAnnouncements();
   const [searchInput, setSearchInput] = useState("");
   const [query, setQuery] = useState("");
 
@@ -62,11 +62,17 @@ const BlogListPage = () => {
           </label>
         </div>
 
+        {error && (
+          <p role="alert" className="mb-6 rounded-lg border border-amber-500/40 bg-amber-500/10 p-4 text-sm text-[var(--text-1)]">
+            {t("blog.announcementsLoadError")}
+          </p>
+        )}
+
         {posts.length > 0 ? (
           <section aria-label={t("blog.title")} className="grid grid-cols-1 gap-6 md:grid-cols-2">
             {posts.map((post) => <BlogCard key={post.slug} post={post} />)}
           </section>
-        ) : (
+        ) : error ? null : (
           <div className="glass-card p-8 text-center sm:p-12" role="status">
             <p className="text-[var(--text-2)]">
               {query ? t("blog.noSearchResults") : t("blog.noPosts")}

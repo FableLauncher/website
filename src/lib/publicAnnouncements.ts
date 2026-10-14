@@ -71,10 +71,14 @@ function toBlogPost(item: PublicAnnouncement): BlogPost {
   };
 }
 
-export async function loadPublicAnnouncements(signal?: AbortSignal): Promise<BlogPost[]> {
-  if (!apiBaseUrl) return [];
-  const response = await fetch(
-    publicAnnouncementsUrl(apiBaseUrl),
+export async function loadPublicAnnouncements(
+  signal?: AbortSignal,
+  baseUrl = apiBaseUrl,
+  fetcher: typeof fetch = fetch,
+): Promise<BlogPost[]> {
+  if (!baseUrl) return [];
+  const response = await fetcher(
+    publicAnnouncementsUrl(baseUrl),
     { method: "GET", signal, headers: { accept: "application/json" } },
   );
   if (!response.ok) throw new Error(`Announcements endpoint returned HTTP ${response.status}.`);

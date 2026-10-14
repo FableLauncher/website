@@ -97,6 +97,7 @@ export default {
     tags: "标签",
     noPosts: "暂未发布 Fable 动态。",
     noSearchResults: "没有符合搜索条件的 Fable 动态。",
+    announcementsLoadError: "部分动态暂时无法加载，请稍后重试。",
     backToList: "返回动态",
     notFound: "该文章暂不可用。",
     readingTime: "{{minutes}} 分钟阅读",
