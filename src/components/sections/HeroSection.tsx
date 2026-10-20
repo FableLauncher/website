@@ -77,8 +77,8 @@ const HeroSection = () => {
           <img
             src={homeScreen}
             alt={t("hero.screenshotAlt")}
-            width="1600"
-            height="900"
+            width="1917"
+            height="1078"
             fetchPriority="high"
             decoding="async"
             className="aspect-[16/9] h-auto w-full object-cover object-[right_top] transition-transform duration-700 group-hover:scale-[1.01]"

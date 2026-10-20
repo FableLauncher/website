@@ -3,14 +3,12 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Github, Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { FABLE_RELEASE_LABEL } from "../brand";
-import { useNotice } from "./Notice";
+import { FABLE_GITHUB_URL, FABLE_RELEASE_LABEL } from "../brand";
 import { fableLogo } from "../assets/launcherScreens";
 
 const Navbar = () => {
   const { t } = useTranslation();
   const location = useLocation();
-  const { showNotice } = useNotice();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
@@ -102,11 +100,6 @@ const Navbar = () => {
     { name: t("nav.news"), path: "/blog" },
   ];
 
-  const handleGitHub = () => {
-    showNotice(t("notice.github"));
-    setMenuOpen(false);
-  };
-
   const navigationLinks = (mobile = false) =>
     navLinks.map((link) => {
       const isActive = activePath(link.path);
@@ -138,16 +131,28 @@ const Navbar = () => {
       );
     });
 
-  const utilityControls = () => (
-    <button
-      type="button"
-      onClick={handleGitHub}
-      aria-label={t("common.github")}
-      className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full text-[var(--text-2)] transition-colors hover:text-[var(--brand)]"
-    >
-      <Github size={19} aria-hidden="true" />
-    </button>
-  );
+  const utilityControls = () =>
+    FABLE_GITHUB_URL ? (
+      <a
+        href={FABLE_GITHUB_URL}
+        target="_blank"
+        rel="noreferrer"
+        aria-label={t("common.github")}
+        className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full text-[var(--text-2)] transition-colors hover:text-[var(--brand)]"
+      >
+        <Github size={19} aria-hidden="true" />
+      </a>
+    ) : (
+      <button
+        type="button"
+        disabled
+        title={t("notice.github")}
+        aria-label={t("notice.github")}
+        className="inline-flex min-h-11 min-w-11 cursor-not-allowed items-center justify-center rounded-full text-[var(--text-2)] opacity-50"
+      >
+        <Github size={19} aria-hidden="true" />
+      </button>
+    );
 
   return (
     <>
@@ -235,14 +240,30 @@ const Navbar = () => {
               <nav className="flex-1 overflow-y-auto px-6 pb-6 pt-24" aria-label={t("common.navigationMenu")}>
                 <div className="flex flex-col divide-y divide-[var(--divider)]/30">
                   {navigationLinks(true)}
-                  <button
-                    type="button"
-                    onClick={handleGitHub}
-                    className="flex min-h-12 items-center gap-2 py-3 text-left text-lg text-[var(--text-2)] hover:text-[var(--brand)]"
-                  >
-                    {t("nav.github")}
-                    <Github size={16} aria-hidden="true" />
-                  </button>
+                  {FABLE_GITHUB_URL ? (
+                    <a
+                      href={FABLE_GITHUB_URL}
+                      target="_blank"
+                      rel="noreferrer"
+                      onClick={() => setMenuOpen(false)}
+                      className="flex min-h-12 items-center gap-2 py-3 text-left text-lg text-[var(--text-2)] hover:text-[var(--brand)]"
+                    >
+                      {t("nav.github")}
+                      <Github size={16} aria-hidden="true" />
+                    </a>
+                  ) : (
+                    <button
+                      type="button"
+                      disabled
+                      title={t("notice.github")}
+                      aria-label={t("notice.github")}
+                      className="flex min-h-12 cursor-not-allowed items-center gap-2 py-3 text-left text-lg text-[var(--text-2)] opacity-50"
+                    >
+                      {t("nav.github")}
+                      <Github size={16} aria-hidden="true" />
+                      <span className="text-xs">{t("common.comingSoon")}</span>
+                    </button>
+                  )}
                 </div>
               </nav>
             </motion.div>

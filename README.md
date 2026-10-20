@@ -35,8 +35,8 @@ npm run preview
 
 ## Fable assets and release status
 
-- `public/assets/fable-logo.png` is the shared Fable logo used by the navigation, footer, download page, screenshot placeholders, and favicon. `src/assets/logo.png` is the unchanged source copy.
-- `src/assets/launcher/` contains explicitly labeled, replaceable screenshot placeholders. No reference-project screenshots are presented as Fable UI.
+- `public/assets/fable-logo.png` is the shared Fable logo used by the navigation, footer, download page, and favicon. `src/assets/logo.png` is the unchanged source copy.
+- `src/assets/launcher/` contains the Fable Launcher screenshots used by the Features section and home-page preview.
 - `public/assets/backgrounds/` preserves the reference site's ambient Minecraft scenery and image treatment; it contains no launcher UI imagery.
 - `src/brand.ts` holds the Fable version, future content route names, and nullable release/community URL placeholders. No release API is called.
 - The download page shows Fable Launcher v0.1.1 Beta for Windows. Its download control stays disabled until an authorized public release URL is configured.
@@ -53,4 +53,4 @@ These route names are recorded for later integration only and are not requested 
 
 ## License
 
-The upstream website's MIT license notice is preserved in [LICENSE](./LICENSE). Fable branding, copy, release information, and screenshot placeholders are Fable-specific.
+The upstream website's MIT license notice is preserved in [LICENSE](./LICENSE). Fable branding, copy, release information, and launcher screenshots are Fable-specific.

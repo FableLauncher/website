@@ -9,6 +9,7 @@ export default {
     navigationMenu: "导航菜单",
     skipToContent: "跳转到正文",
     github: "GitHub",
+    comingSoon: "即将推出",
     privacy: "隐私",
     terms: "条款",
     news: "动态",
@@ -25,43 +26,43 @@ export default {
     titleLast: "Minecraft。",
     description:
       "Fable 是一款 Minecraft Java 版启动器，专注于实例管理、模组加载器、Java 运行时和 Modrinth 内容。",
-    screenshotAlt: "Fable Launcher 首页截图占位图",
+    screenshotAlt: "Fable Launcher 首页，显示创建实例、浏览整合包和打开资源库的快捷入口",
     screenshotLabel: "Fable Launcher — 首页",
   },
   features: {
     title: "为你的玩法而设计",
     subtitle: "整理 Minecraft 配置，不打扰你的游戏。",
-    ui: {
-      title: "从清晰的界面开始",
-      desc: "现代桌面界面让实例和下一步操作一目了然。",
+    home: {
+      title: "首页",
+      desc: "从启动器首页创建实例、浏览整合包、打开资源库或查看热门下载。",
     },
-    content: {
-      title: "发现适合新世界的内容",
-      desc: "浏览 Modrinth 上的模组、整合包、资源包、光影、数据包和世界，并为实例安装、更新或移除内容。",
+    library: {
+      title: "资源库",
+      desc: "集中查看 Minecraft 实例，并使用搜索、排序、筛选、分组和实例操作。",
     },
-    versions: {
-      title: "版本与加载器，一处管理",
-      desc: "安装 Minecraft 版本，并为实例选择原版、Fabric、Forge、NeoForge 或 Quilt。",
+    creation: {
+      title: "创建实例",
+      desc: "创建实例时选择 Minecraft 版本以及原版、Fabric、Forge、NeoForge 或 Quilt。",
     },
-    java: {
-      title: "为版本匹配 Java",
-      desc: "Fable 可检测和管理 Java 8、17、21 和 25，并为 Minecraft 版本选择兼容的运行时。",
+    instanceSettings: {
+      title: "实例设置",
+      desc: "查看实例的 Minecraft 版本、加载器、Java 运行时、内存和游戏目录，以及内容和管理工具。",
     },
-    instances: {
-      title: "让每个实例彼此独立",
-      desc: "为实例使用独立游戏目录，也可导入、导出、复制实例或修复文件，不影响其他配置。",
+    appearance: {
+      title: "外观设置",
+      desc: "通过预设、强调色、界面缩放、布局密度和资源库卡片大小调整启动器外观。",
     },
-    settings: {
-      title: "配置你的游戏环境",
-      desc: "为每个实例设置内存和兼容的 Java 运行时，并随时查看下载进度。",
+    discover: {
+      title: "发现",
+      desc: "浏览 Modrinth 上的整合包、模组、资源包、光影、数据包和世界，并按版本、加载器、类别和排序方式筛选。",
     },
     screenshots: {
-      ui: "Fable Launcher 界面截图占位图",
-      content: "Fable Launcher 内容发现截图占位图",
-      versions: "Fable Launcher 实例与版本截图占位图",
-      java: "Fable Launcher Java 管理截图占位图",
-      instances: "Fable Launcher 实例管理截图占位图",
-      settings: "Fable Launcher 设置截图占位图",
+      home: "Fable Launcher 首页，显示快捷操作和热门下载",
+      library: "Fable Launcher 资源库，显示 Minecraft 实例卡片、筛选和分组控件",
+      creation: "Fable Launcher 新建实例对话框，显示 Minecraft 版本和模组加载器选项",
+      instanceSettings: "Fable Launcher 实例概览，显示版本、加载器、Java、内存和管理选项",
+      appearance: "Fable Launcher 外观设置，显示预设、强调色、缩放、密度和卡片大小",
+      discover: "Fable Launcher 发现页面，浏览 Modrinth 项目、内容类别和筛选选项",
     },
   },
   download: {
@@ -129,6 +130,6 @@ export default {
     browseNews: "查看动态",
   },
   notice: {
-    github: "Fable GitHub 链接将在此处添加。",
+    github: "GitHub 链接即将推出。",
   },
 } as const;

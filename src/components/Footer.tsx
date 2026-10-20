@@ -1,17 +1,16 @@
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { ExternalLink } from "lucide-react";
-import { useNotice } from "./Notice";
+import { FABLE_GITHUB_URL } from "../brand";
 import { fableLogo } from "../assets/launcherScreens";
 
 const Footer = () => {
   const { t } = useTranslation();
-  const { showNotice } = useNotice();
   const year = new Date().getFullYear();
 
   const groups: {
     title: string;
-    links: Array<{ label: string; to?: string; action?: () => void }>;
+    links: Array<{ label: string; to?: string; external?: string | null }>;
   }[] = [
     {
       title: t("footer.projects"),
@@ -24,7 +23,7 @@ const Footer = () => {
     },
     {
       title: t("footer.community"),
-      links: [{ label: t("nav.github"), action: () => showNotice(t("notice.github")) }],
+      links: [{ label: t("nav.github"), external: FABLE_GITHUB_URL }],
     },
     {
       title: t("footer.support"),
@@ -63,16 +62,26 @@ const Footer = () => {
                       >
                         {link.label}
                       </Link>
-                    ) : link.action ? (
-                      <button
-                        type="button"
-                        onClick={link.action}
+                    ) : link.external ? (
+                      <a
+                        href={link.external}
+                        target="_blank"
+                        rel="noreferrer"
                         className="flex min-h-11 items-center gap-2 text-[var(--text-2)] transition-colors hover:text-[var(--brand)]"
                       >
                         {link.label}
                         <ExternalLink size={13} aria-hidden="true" />
-                      </button>
-                    ) : null}
+                      </a>
+                    ) : (
+                      <span
+                        title={t("notice.github")}
+                        aria-disabled="true"
+                        className="flex min-h-11 cursor-not-allowed items-center gap-2 text-[var(--text-2)] opacity-60"
+                      >
+                        {link.label}
+                        <span className="text-xs">{t("common.comingSoon")}</span>
+                      </span>
+                    )}
                   </li>
                 ))}
               </ul>

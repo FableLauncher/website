@@ -11,7 +11,7 @@ if (!container) throw new Error("The page is missing the #root mount element.");
 const heroPreload = document.createElement("link");
 heroPreload.rel = "preload";
 heroPreload.as = "image";
-heroPreload.type = "image/svg+xml";
+heroPreload.type = "image/png";
 heroPreload.href = homeScreen;
 document.head.append(heroPreload);
 

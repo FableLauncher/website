@@ -9,6 +9,7 @@ export default {
     navigationMenu: "Navigation menu",
     skipToContent: "Skip to content",
     github: "GitHub",
+    comingSoon: "Coming soon",
     privacy: "Privacy",
     terms: "Terms",
     news: "News",
@@ -25,43 +26,43 @@ export default {
     titleLast: "Minecraft.",
     description:
       "Fable is a Minecraft Java Edition launcher for instances, mod loaders, Java runtimes, and Modrinth content.",
-    screenshotAlt: "Fable Launcher home screen screenshot placeholder",
+    screenshotAlt: "Fable Launcher dashboard with shortcuts to create an instance, browse modpacks, and open the library",
     screenshotLabel: "Fable Launcher — home",
   },
   features: {
     title: "A launcher for the way you play",
     subtitle: "Keep your Minecraft setups together, without getting in the way.",
-    ui: {
-      title: "A clearer place to start",
-      desc: "A modern desktop interface puts your instances and the next step within reach.",
+    home: {
+      title: "Home",
+      desc: "Create an instance, explore modpacks, open the Library, and see top downloads from the launcher dashboard.",
     },
-    content: {
-      title: "Find content for your next world",
-      desc: "Browse Modrinth mods, modpacks, resource packs, shaders, data packs, and worlds, then install, update, or remove content for an instance.",
+    library: {
+      title: "Library",
+      desc: "View your Minecraft instances together, with search, sorting, filters, groups, and instance actions.",
     },
-    versions: {
-      title: "Versions and loaders, together",
-      desc: "Install Minecraft versions and choose Vanilla, Fabric, Forge, NeoForge, or Quilt for an instance.",
+    creation: {
+      title: "Instance creation",
+      desc: "Create an instance by choosing a Minecraft version and Vanilla, Fabric, Forge, NeoForge, or Quilt.",
     },
-    java: {
-      title: "Java matched to your version",
-      desc: "Fable detects and manages Java 8, 17, 21, and 25 runtimes, then selects a compatible runtime for your Minecraft version.",
+    instanceSettings: {
+      title: "Instance settings",
+      desc: "Review an instance's Minecraft version, loader, Java runtime, memory, and game directory alongside its content and management tools.",
     },
-    instances: {
-      title: "Keep each instance separate",
-      desc: "Use instance-specific game directories, import or export setups, duplicate an instance, or repair its files without affecting another.",
+    appearance: {
+      title: "Appearance settings",
+      desc: "Adjust the launcher with appearance presets, an accent color, interface scale, density, and library card size.",
     },
-    settings: {
-      title: "Configure your setup",
-      desc: "Set memory and a compatible Java runtime for each instance, and keep download progress within reach.",
+    discover: {
+      title: "Discover",
+      desc: "Browse Modrinth modpacks, mods, resource packs, shaders, data packs, and worlds, with filters for version, loader, category, and sorting.",
     },
     screenshots: {
-      ui: "Fable Launcher interface screenshot placeholder",
-      content: "Fable Launcher Discover screenshot placeholder",
-      versions: "Fable Launcher instance and version screenshot placeholder",
-      java: "Fable Launcher Java manager screenshot placeholder",
-      instances: "Fable Launcher instance management screenshot placeholder",
-      settings: "Fable Launcher settings screenshot placeholder",
+      home: "Fable Launcher home dashboard with quick actions and featured downloads",
+      library: "Fable Launcher Library showing Minecraft instance cards, filters, and grouping controls",
+      creation: "Fable Launcher new instance dialog with Minecraft version and mod loader choices",
+      instanceSettings: "Fable Launcher instance overview showing version, loader, Java, memory, and management options",
+      appearance: "Fable Launcher appearance settings with presets, accent color, scale, density, and card size",
+      discover: "Fable Launcher Discover page browsing Modrinth projects with content categories and filters",
     },
   },
   download: {
@@ -131,6 +132,6 @@ export default {
     browseNews: "View news",
   },
   notice: {
-    github: "The Fable GitHub link will be added here.",
+    github: "GitHub link coming soon.",
   },
 } as const;

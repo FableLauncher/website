@@ -1,20 +1,18 @@
-import home from "./launcher/home-screen-placeholder.svg";
-import instances from "./launcher/instances-screen-placeholder.svg";
-import discover from "./launcher/discover-screen-placeholder.svg";
-import java from "./launcher/java-manager-placeholder.svg";
-import desktop from "./launcher/desktop-screen-placeholder.svg";
-import interfaceScreen from "./launcher/interface-screen-placeholder.svg";
-import settings from "./launcher/settings-screen-placeholder.svg";
+import home from "./launcher/home-screen.png";
+import library from "./launcher/Library.png";
+import instanceCreation from "./launcher/instance-creation.png";
+import instanceSettings from "./launcher/Instance-settings.png";
+import appearanceSettings from "./launcher/Launchersettings-appearance.png";
+import discover from "./launcher/discover-screen.png";
 
 export const fableLogo = "/assets/fable-logo.png";
 export const homeScreen = home;
 
 export const launcherScreens = {
   home,
-  instances,
+  library,
+  instanceCreation,
+  instanceSettings,
+  appearanceSettings,
   discover,
-  java,
-  desktop,
-  interface: interfaceScreen,
-  settings,
 } as const;

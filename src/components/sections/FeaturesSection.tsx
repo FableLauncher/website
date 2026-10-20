@@ -9,46 +9,58 @@ const FeaturesSection = () => {
 
   const features = [
     {
-      id: "ui",
-      title: t("features.ui.title"),
-      description: t("features.ui.desc"),
-      image: launcherScreens.interface,
-      alt: t("features.screenshots.ui"),
+      id: "home",
+      title: t("features.home.title"),
+      description: t("features.home.desc"),
+      image: launcherScreens.home,
+      alt: t("features.screenshots.home"),
+      width: 1917,
+      height: 1078,
     },
     {
-      id: "content",
-      title: t("features.content.title"),
-      description: t("features.content.desc"),
+      id: "library",
+      title: t("features.library.title"),
+      description: t("features.library.desc"),
+      image: launcherScreens.library,
+      alt: t("features.screenshots.library"),
+      width: 1917,
+      height: 1078,
+    },
+    {
+      id: "creation",
+      title: t("features.creation.title"),
+      description: t("features.creation.desc"),
+      image: launcherScreens.instanceCreation,
+      alt: t("features.screenshots.creation"),
+      width: 1917,
+      height: 1067,
+    },
+    {
+      id: "instance-settings",
+      title: t("features.instanceSettings.title"),
+      description: t("features.instanceSettings.desc"),
+      image: launcherScreens.instanceSettings,
+      alt: t("features.screenshots.instanceSettings"),
+      width: 1917,
+      height: 1078,
+    },
+    {
+      id: "appearance",
+      title: t("features.appearance.title"),
+      description: t("features.appearance.desc"),
+      image: launcherScreens.appearanceSettings,
+      alt: t("features.screenshots.appearance"),
+      width: 1917,
+      height: 1078,
+    },
+    {
+      id: "discover",
+      title: t("features.discover.title"),
+      description: t("features.discover.desc"),
       image: launcherScreens.discover,
-      alt: t("features.screenshots.content"),
-    },
-    {
-      id: "versions",
-      title: t("features.versions.title"),
-      description: t("features.versions.desc"),
-      image: launcherScreens.instances,
-      alt: t("features.screenshots.versions"),
-    },
-    {
-      id: "java",
-      title: t("features.java.title"),
-      description: t("features.java.desc"),
-      image: launcherScreens.java,
-      alt: t("features.screenshots.java"),
-    },
-    {
-      id: "instances",
-      title: t("features.instances.title"),
-      description: t("features.instances.desc"),
-      image: launcherScreens.instances,
-      alt: t("features.screenshots.instances"),
-    },
-    {
-      id: "settings",
-      title: t("features.settings.title"),
-      description: t("features.settings.desc"),
-      image: launcherScreens.settings,
-      alt: t("features.screenshots.settings"),
+      alt: t("features.screenshots.discover"),
+      width: 1917,
+      height: 1078,
     },
   ];
 
@@ -116,7 +128,7 @@ const FeaturesSection = () => {
                   className="flex w-full flex-col items-start space-y-3 text-left md:w-1/2 md:space-y-6"
                 >
                   <h3
-                    id={index === 0 ? "feature-ui-title" : undefined}
+                    id={index === 0 ? "feature-home-title" : undefined}
                     className="text-xl font-bold leading-tight text-[var(--text-1)] sm:text-2xl md:text-4xl"
                   >
                     {feature.title}
@@ -131,11 +143,11 @@ const FeaturesSection = () => {
                     <img
                       src={feature.image}
                       alt={feature.alt}
-                      width="1600"
-                      height="900"
+                      width={feature.width}
+                      height={feature.height}
                       loading="lazy"
                       decoding="async"
-                      className="h-auto w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+                      className="h-auto w-full transition-transform duration-700 ease-out group-hover:scale-[1.02]"
                     />
                   </div>
                   <figcaption className="sr-only">{feature.alt}</figcaption>
